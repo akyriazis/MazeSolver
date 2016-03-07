@@ -1,13 +1,13 @@
-Student Name #1: TODO
-Student ugrad login #1: TODO
+Student Name #1: Alex Kyriazis
+Student ugrad login #1: s3x9a
 
-Student Name #2: TODO
-Student ugrad login #2: TODO
+Student Name #2: Lin Xiang
+Student ugrad login #2: o8a0b
 
 TODO: Acknowledgment that you understand and have followed the course's collaboration policy
-(http://www.ugrad.cs.ubc.ca/~cs221/current/syllabus.shtml#conduct):
+(http://www.ugrad.cs.ubc.ca/~cs221/current/syllabus.shtml#conduct): 
 
-TODO: [[Put your names here again as signature]]
+TODO: Alex Kyriazis, __________
 
 TODO: submit using: make handin-earlybird
 (Run that from one of the UBC ugrad computers, after you have transfered
