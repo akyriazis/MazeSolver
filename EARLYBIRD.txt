@@ -50,7 +50,7 @@ was the solution?
 6.  By looking at these examples, and by looking at the TextMaze.cpp class,
 which direction does the TextMaze class try to explore first when doing DFS?.
 
-the priority of possible motion is left, up, right, down
+the priority of possible motion (starting from most prioritized) is left, up, right, down
 
 7.  Next, edit solve.cpp again to switch to make activeStates
 an UnsortedPriorityQueue.  This gives you best-first search (BestFS).
@@ -62,9 +62,9 @@ Maze 2: 14
 Maze 3: 5
 Maze 4: 90
 
-BestFS is greedy, and will only look for the short-term best solution. However, sometimes in the long-term, the situation needs to get worse, for it to get better. This is a situation BFS performs poorly in.
+BestFS is greedy, and will only look for the short-term best solution. However, sometimes in the long-term, the path needs to go farther from the solution to eventually get closer. This is a situation BFS performs poorly in.
 
-DFS is called DFS because it searches very deeply in one direction before  moving onto a different decision-branch at the beginning.
+DFS is called DFS because it searches very deeply in one direction before moving onto a different decision-branch at the beginning.
 
 8.  Edit solve.cpp to solve the empty Sudoku board.  (You should
 only comment out one line and uncomment one line to do that.)
