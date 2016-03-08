@@ -7,7 +7,7 @@ Student ugrad login #2: o8a0b
 TODO: Acknowledgment that you understand and have followed the course's collaboration policy
 (http://www.ugrad.cs.ubc.ca/~cs221/current/syllabus.shtml#conduct): 
 
-TODO: Alex Kyriazis, __________
+TODO: Alex Kyriazis, Lin Xiang
 
 TODO: submit using: make handin-earlybird
 (Run that from one of the UBC ugrad computers, after you have transfered
@@ -25,46 +25,57 @@ Type your answers directly in this file.
 Watch the program solve a maze using DFS.  How many steps long was
 the solution?
 
-TODO:
+58 steps
 
 2.  Edit solve.cpp to switch to the LinkedListStack.  Keep the same
 maze.  How many steps long was the solution?
 
-TODO:
+58 steps
 
 3.  Edit solve.cpp to change the maze to Maze 2.  How many steps long
 was the solution?
 
-TODO:
+46 steps
 
 4.  Edit solve.cpp to change the maze to Maze 3.  How many steps long
 was the solution?
 
-TODO:
+247 steps
 
 5.  Edit solve.cpp to change the maze to Maze 4.  How many steps long
 was the solution?
 
-TODO:
+110 steps
 
 6.  By looking at these examples, and by looking at the TextMaze.cpp class,
-which direction does the TextMaze class try to explore first when doing DFS?
+which direction does the TextMaze class try to explore first when doing DFS?.
 
-TODO:
+the priority of possible motion is left, up, right, down
 
 7.  Next, edit solve.cpp again to switch to make activeStates
 an UnsortedPriorityQueue.  This gives you best-first search (BestFS).
 Repeat how many steps long is the solution for Mazes 1, 2, 3, and 4?
 Do you see why DFS is called DFS, and BestFS isn't always best?
 
-TODO:
+Maze 1: 58
+Maze 2: 14
+Maze 3: 5
+Maze 4: 90
 
 8.  Edit solve.cpp to solve the empty Sudoku board.  (You should
 only comment out one line and uncomment one line to do that.)
 Then change the delay in the usleep delay in the solveMaze function
 to 100000.  What solution do you get?
 
-TODO:
+ 1 2 3 4 5 6 7 8 9
+ 4 5 6 7 8 9 1 2 3
+ 7 8 9 1 2 3 4 5 6
+ 2 1 4 3 6 5 8 9 7
+ 3 6 5 8 9 7 2 1 4
+ 8 9 7 2 1 4 3 6 5
+ 5 3 1 6 4 2 9 7 8
+ 6 4 2 9 7 8 5 3 1
+ 9 7 8 5 3 1 6 4 2
 
 9.  Edit solve.cpp to switch to the 3x3 slider puzzle.  (Be careful not
 to use the unsolvable 3x3!)  Also, comment out the delay and print
@@ -73,12 +84,18 @@ print, so you can watch the solving process, but take them out for
 timing.) How long (time in seconds) does it take to solve this problem
 with BestFS (using UnsortedPriorityQueue as in the preceding question)?
 
-TODO:
+Practically instant. (less than one second)
 
 10.  Edit solve.cpp to switch back to ArrayStack or LinkedListStack,
 which switches back to DFS.  Try solving the 3x3 slider puzzle.
 What happens?  Why?
 
-TODO:
+7min 40sec. Very long.
+
+Just intuitively thinking about how DFS compares to BestFS, DFS would be slow. This is because the decision tree for the slider is very tall, and DFS will take a lot of time exploring deeply in one tall subset of states that is most likely very far off from the solution. This is not very efficient and understandably takes a lot of time.
+
+BestFS is more efficient because 'correctness' is very easy to quantify for this problem. With a bias towards ordering numbers in the correct places, the state traversal will always tend to the actual solution. Also, there are no large obvious 'barriers' between the initial state and the solution that would make BestFS unfavourable.
+
+
 
 ----------------------------------------------------------------------
