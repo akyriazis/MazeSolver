@@ -7,7 +7,7 @@ Student ugrad login #2: o8a0b
 TODO: Acknowledgment that you understand and have followed the course's collaboration policy
 (http://www.ugrad.cs.ubc.ca/~cs221/current/syllabus.shtml#conduct): 
 
-TODO: Alex Kyriazis, Lin Xiang
+Signed, Alex Kyriazis, Lin Xiang
 
 TODO: submit using: make handin-earlybird
 (Run that from one of the UBC ugrad computers, after you have transfered
@@ -62,6 +62,10 @@ Maze 2: 14
 Maze 3: 5
 Maze 4: 90
 
+BestFS is greedy, and will only look for the short-term best solution. However, sometimes in the long-term, the situation needs to get worse, for it to get better. This is a situation BFS performs poorly in.
+
+DFS is called DFS because it searches very deeply in one direction before  moving onto a different decision-branch at the beginning.
+
 8.  Edit solve.cpp to solve the empty Sudoku board.  (You should
 only comment out one line and uncomment one line to do that.)
 Then change the delay in the usleep delay in the solveMaze function
@@ -94,7 +98,7 @@ What happens?  Why?
 
 Just intuitively thinking about how DFS compares to BestFS, DFS would be slow. This is because the decision tree for the slider is very tall, and DFS will take a lot of time exploring deeply in one tall subset of states that is most likely very far off from the solution. This is not very efficient and understandably takes a lot of time.
 
-BestFS is more efficient because 'correctness' is very easy to quantify for this problem. With a bias towards ordering numbers in the correct places, the state traversal will always tend to the actual solution. Also, there are no large obvious 'barriers' between the initial state and the solution that would make BestFS unfavourable.
+BestFS is more efficient because there are no large obvious 'barriers' between the initial state and the solution that would make BestFS unfavourable. Also, 'correctness' is very easy to quantify for this problem. With a bias towards ordering numbers in the correct places, the state traversal will always tend to the actual solution.
 
 
 
