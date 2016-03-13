@@ -18,30 +18,28 @@ using namespace std;
 // of BagOfMazeStates
 ArrayQueue::ArrayQueue()
 {
-  // Constructor: initialize member variables
-  //              and do any other initialization
-  //              needed (if any)
-  // TODO: implement constructor
+	array = new MazeState*[INIT_SIZE]();
+	capacity = INIT_SIZE;
 }
 
 void ArrayQueue::add(MazeState *elem)
 {
-  // TODO: implement add method
-  if ((tail+1) % (capacity+1) == head) {
-    // queue is full
-    ensure_capacity(capacity+1); // ensure_capacity makes grows the array.
-  }
+	if ((tail+1) % (capacity) == head) {
+		// queue is full
+		ensure_capacity(capacity+1); // ensure_capacity makes grows the array.
+	}
 
-  // Your code goes here...
+	array[tail] = elem;
+	tail = (tail + 1) % capacity;
 }
 
 MazeState *ArrayQueue::remove()
 {
-  // TODO: implement remove method
-  assert(!is_empty());
-  MazeState *temp = array[head];
-  head = (head+1) % (capacity+1);
-  return temp;
+	// TODO: implement remove method
+	assert(!is_empty());
+	MazeState *temp = array[head];
+	head = (head + 1) % (capacity);
+	return temp;
 }
 
 bool ArrayQueue::is_empty()
@@ -53,24 +51,30 @@ bool ArrayQueue::is_empty()
 // TODO: implement ensure_capacity (but leave this to last.. just start with lots of capacity!)
 void ArrayQueue::ensure_capacity(int n)
 {
-  if (capacity < n) {
-    // Make plenty of room.
-    int target_capacity = (n > 2*capacity+1) ? n : (2*capacity+1);
+	if (capacity < n) {
+		// Make plenty of room.
+		int target_capacity = (n > 2 * capacity + 1) ? n : (2 * capacity + 1);
+		MazeState **oldarray = array;
+		array = new MazeState*[target_capacity]();
 
-    // TODO: Set the current array aside and make room for the new one.
+		int i = 0;
+		while ((i + head) % capacity != tail) {
+			array[i] = oldarray[(i + head) % capacity];
+			i++;
+		}
+		head = 0;
+		tail = i;
 
-    // TODO: Copy each element of the old array over.
-    // Update front carefully as you go!  Can you just use front++?
+		capacity = target_capacity;
 
-    // TODO: Fix front and back and capacity so they correspond to the new array.
-    // TODO: Delete the old array.
-  }
+		delete[] oldarray;
+	}
 }
 
 
 ArrayQueue::~ArrayQueue()
 {
-  // TODO: implement the destructor
+	delete[] array;
 }
 
 #endif
