@@ -40,7 +40,10 @@ Type your answers directly in this file.
 breadth-first search (BFS)?  How many steps long were your solutions?
 How does this compare with DFS?
 
-TODO:
+TODO: 
+Maze 1 58 steps, maze 2 14 steps, maze 3 5 steps, maze 4 90 steps
+it is called bfs is beacuse it go through all childrens of current node before it goes deeply.
+dfs will go through one entrie child branch of current node before it goes to next child of current node 
 
 2.  Try to solve the blank Sudoku board using your ArrayQueue
 and LinkedListQueue classes.  What happens?  Why?
