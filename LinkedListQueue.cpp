@@ -24,7 +24,7 @@ void LinkedListQueue::add(MazeState *elem)
    head=temp;
    tail=temp;
    }else{
- 
+ // temp->next=tail;
   tail->next=temp;
   tail=temp;
 }
@@ -42,7 +42,7 @@ MazeState *LinkedListQueue::remove()
   assert(head != NULL||size==0);
   node *temp=new node;
   MazeState *ret=head->data;
-  
+   //std::cout<<"1 "<<size<<std::endl;
    if(size==1){
    tail=NULL;
    delete head;
@@ -51,7 +51,7 @@ MazeState *LinkedListQueue::remove()
   temp=head->next;
    delete head;
    head=temp;}
- 
+ //std::cout<<"2"<<std::endl;
  
  
 
@@ -63,13 +63,13 @@ MazeState *LinkedListQueue::remove()
 bool LinkedListQueue::is_empty()
 {
   // TODO:  Implement this.
-   return tail==NULL||head==NULL||size==0; ;
+   return tail==NULL; 
 }
 
 LinkedListQueue::~LinkedListQueue()
 {
   // TODO:  Implement the destructor.  Be sure to delete everything.
-           while(tail!=NULL||size!=0){
+           while(tail!=NULL){
              remove();
 }
 
