@@ -16,7 +16,7 @@ HeapPriorityQueue::~HeapPriorityQueue() {
 }
 
 void HeapPriorityQueue::add(MazeState *elem) {
-	int index = heap.size();
+	int index = (int) heap.size();
 	heap.push_back(elem);
 	while (!is_root(index) && heap[parent(index)]->getBadness() > heap[index]->getBadness()) {
 		std::swap(heap[index], heap[parent(index)]);
