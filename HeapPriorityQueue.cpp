@@ -16,18 +16,47 @@ HeapPriorityQueue::~HeapPriorityQueue() {
 }
 
 void HeapPriorityQueue::add(MazeState *elem) {
-  // TODO:  Implement this!
+	int index = heap.size();
+	heap.push_back(elem);
+	while (!is_root(index) && heap[parent(index)]->getBadness() > heap[index]->getBadness()) {
+		std::swap(heap[index], heap[parent(index)]);
+		index = parent(index);
+	}
 }
 
 MazeState * HeapPriorityQueue::remove() {
-  assert(!is_empty());
 
-  // TODO:  Implement this!
+	assert(!is_empty());
+
+	MazeState* temp = heap[0];
+	heap[0] = heap[heap.size() - 1];
+	heap.pop_back();
+
+	int index = 0;
+	while (num_children(index) != 0) {
+
+		int newIndex;
+		int childIndex = first_child(index);
+
+		if (num_children(index) == 2) {
+			if (heap[childIndex]->getBadness() < heap[childIndex + 1]->getBadness()) {
+				newIndex = childIndex;
+			} else {
+				newIndex = childIndex + 1;
+			}
+		}else{ //only one child (must be first child)
+			newIndex = childIndex;
+		}
+		if (heap[newIndex]->getBadness() > heap[index]->getBadness()) { break; }
+		std::swap(heap[index], heap[newIndex]);
+		index = newIndex;
+	}
+	return temp;
 }
 
 
 bool HeapPriorityQueue::is_empty() {
-  // TODO:  Implement this!
+	return heap.empty();
 }
 
 // You might find these helper functions helpful...
