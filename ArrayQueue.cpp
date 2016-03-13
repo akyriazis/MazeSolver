@@ -16,7 +16,7 @@ using namespace std;
 // free to change function signatures, etc.
 // as long as ArrayQueue is some subtype
 // of BagOfMazeStates
-ArrayQueue::ArrayQueue()
+ArrayQueue::ArrayQueue() : head(0), tail(0)
 {
 	array = new MazeState*[INIT_SIZE]();
 	capacity = INIT_SIZE;
