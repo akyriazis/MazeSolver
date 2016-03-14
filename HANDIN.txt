@@ -4,27 +4,33 @@ Student ugrad login #1: TODO: s3x9a
 Student Name #2: TODO: Lin Xiang
 Student ugrad login #2: TODO: o8a0b
 
-Team name (for fun!): TODO:
+Team name (for fun!): Team Fizz
 
 Acknowledgment that you understand and have followed the course's
 collaboration policy
 (http://www.ugrad.cs.ubc.ca/~cs221/current/syllabus.shtml#conduct):
 
-TODO: [[Put your names here again as a signature]] Lin Xiang, Alex Kyriazis
+Lin Xiang, Alex Kyriazis
 
 TODO: submit using: make handin-proj1
 
 ----------------------------------------------------------------------
 
-Approximate hours on project: TODO:
+Approximate hours on project: 5 hours each
 
 ----------------------------------------------------------------------
 
 For teams, rough breakdown of work: TODO:
 
+ArrayQueue: Alex
+LinkedListQueue: Lin
+HeapPriorityQueue: Alex
+HANDIN.txt: Both
+EARLYBIRD.txt: Both
+
 ----------------------------------------------------------------------
 
-Acknowledgment of assistance: TODO:
+Acknowledgment of assistance: Piazza, lecture slide.
 
 ----------------------------------------------------------------------
 
@@ -40,25 +46,40 @@ Type your answers directly in this file.
 breadth-first search (BFS)?  How many steps long were your solutions?
 How does this compare with DFS?
 
-TODO: 
-Maze 1 58 steps, maze 2 14 steps, maze 3 5 steps, maze 4 90 steps
-it is called bfs is beacuse it go through all childrens of current node before it goes deeply.
-dfs will go through one entrie child branch of current node before it goes to next child of current node 
+BFS:
+Maze 1: 58 steps
+Maze 2: 14 steps
+Maze 3: 5 steps
+Maze 4: 90 steps
+
+(In the following answer, a node is defined as a possible state of the problem, and its children are the states that can be immediately reached from it)
+
+It is called BFS because it traverses all children of the current node before it explores deeply past the children. In the context of the maze, it explores very thoroughly a short distance in all directions before it explores deeply in any direction.
+
+DFS will explore deeply in a child branch of the current node before it explores another child branch.
+
+DFS:
+Maze 1: 58 steps
+Maze 2: 46 steps
+Maze 3: 247 steps
+Maze 4: 110 steps
+
+DFS will always take a greater than or equal number of steps to BFS because it has the potential to find a non-optimal solution. Since BFS explores the same distance away in every direction, it will always find the shortest path. DFS will find 'a path', not necessarily the shortest.
 
 2.  Try to solve the blank Sudoku board using your ArrayQueue
 and LinkedListQueue classes.  What happens?  Why?
 
-TODO:
-when dealing with blank sudoku board, both array queue and linkedlistqueue will take very long time, around couple hours
-because both of them need to fill in all the possible numbers, which will lead to 9^81 solutions which is quiet huge.
+When dealing with the blank sudoku board, both the array queue and linkedlistqueue will take a very long time, around a couple of hours. This is because our starting state is far away from the solution state (since we started with a blank board), and since we are doing a breadth search, many impossible states will be explored before valid (no blank box) states are explored. Both queues will need to initially fill all the blanks boxes, which is ~9^81 states, a very large number.
 
 3.  Switch to the medium-difficulty Sudoku problem, and comment
 out the delay and the print statements in the solveMaze function.
 How long does it take to solve the puzzle using your ArrayQueue
 class?  Using your LinkedListQueue class?  Is the difference big?
 
-TODO:
-ArrayQueue 50 steps, LinkedListQueue 50 steps, not big difference, linkedlistqueue and arrayqueue is just the way it store and connect data, efficient will depend more on the alogrithom it use. In this case, both of them are bfs, so the steps shouldn't have big difference
+ArrayQueue: ~50 seconds, 50 steps
+LinkedListQueue: ~50 seconds, 50 steps
+
+There is not a big difference between linkedlistqueue and arrayqueue. The difference in the efficiency of implementation is far less significant than the algorithm they represent, which are both based on a Queue datatype. In this case, both of them perform BFS, so the amount of time and number of steps shouldn't differ.
 
 4.  Edit solve.cpp to switch to the 4x4 and then 5x5 slider puzzles.
 Make sure to comment out the delay and print statements in the solveMaze
@@ -68,8 +89,30 @@ mine will be faster?  Why might that happen?  Are the asymptotic
 runtimes for the heap versus the unsorted array wrong?
 
 TODO:
-4X4 HeapPriorityQueue: 158 steps, UnsortedPriorityQueue 180 steps
-5X5 HeapPriorityQueue: 702 steps, UnsortedPriorityQueue 396 steps
+4x4
+HeapPriorityQueue: < 1 second, 158 steps
+UnsortedPriorityQueue: ~3 seconds, 180 steps
+
+5x5
+HeapPriorityQueue: ~40 seconds, 702 steps
+UnsortedPriorityQueue: ~140 seconds, 396 steps
+
+To understand how fast they run, we need to analyze the runtime of add and remove.
+
+Unsorted:
+add ~ O(1)
+remove ~ O(n)
+
+Heap:
+add ~ O(lg(n))
+remove ~ O(lg(n))
+
+With the specific data we have found, it is hard to compare the run-times because the algorithms are traversing the states differently. This is because the two implementations differ in stability, so duplicate values are chosen differently- leading to different results. Since the algorithms end up doing a different number of actions, we can't easily comment on how the runtimes compare.
+
+However, in the hypothetical case where they do have the same number steps, the idea is as follows. Each implementation will perform the same number of adds as removes. Since the unsorted array excels at adding but does worse at removing, we can say with some confidence that more adding than removing will allow the unsorted priority queue to prosper, and conversely the heap will do better when there is more removing than adding. This analysis comes down to the specific task at hand and understanding how the algorith will traverse the network.
+
+As a broad statement, we hypothesize the unsorted list should perform better in general because we generally add more elements than we remove in a BestFS search since we are taking a 'direct' path to the solution. In the ideal 'direct' path that has n steps, we would have 'n' removes and 'c*n', where c is a constant that isdependent on the nature of the network.
+
 ----------------------------------------------------------------------
 
 We will be checking your implementations of ArrayQueue, LinkedListQueue,
