@@ -1,8 +1,8 @@
-Student Name #1: TODO:
-Student ugrad login #1: TODO:
+Student Name #1: TODO: Alex Kyriazis
+Student ugrad login #1: TODO: s3x9a
 
-Student Name #2: TODO:
-Student ugrad login #2: TODO:
+Student Name #2: TODO: Lin Xiang
+Student ugrad login #2: TODO: o8a0b
 
 Team name (for fun!): TODO:
 
@@ -10,7 +10,7 @@ Acknowledgment that you understand and have followed the course's
 collaboration policy
 (http://www.ugrad.cs.ubc.ca/~cs221/current/syllabus.shtml#conduct):
 
-TODO: [[Put your names here again as a signature]]
+TODO: [[Put your names here again as a signature]] Lin Xiang, Alex Kyriazis
 
 TODO: submit using: make handin-proj1
 
