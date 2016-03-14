@@ -49,6 +49,8 @@ dfs will go through one entrie child branch of current node before it goes to ne
 and LinkedListQueue classes.  What happens?  Why?
 
 TODO:
+when dealing with blank sudoku board, both array queue and linkedlistqueue will take very long time, around couple hours
+because both of them need to fill in all the possible numbers, which will lead to 9^81 solutions which is quiet huge.
 
 3.  Switch to the medium-difficulty Sudoku problem, and comment
 out the delay and the print statements in the solveMaze function.
@@ -56,6 +58,7 @@ How long does it take to solve the puzzle using your ArrayQueue
 class?  Using your LinkedListQueue class?  Is the difference big?
 
 TODO:
+ArrayQueue 50 steps, LinkedListQueue 50 steps, not big difference, linkedlistqueue and arrayqueue is just the way it store and connect data, efficient will depend more on the alogrithom it use. In this case, both of them are bfs, so the steps shouldn't have big difference
 
 4.  Edit solve.cpp to switch to the 4x4 and then 5x5 slider puzzles.
 Make sure to comment out the delay and print statements in the solveMaze
@@ -65,7 +68,8 @@ mine will be faster?  Why might that happen?  Are the asymptotic
 runtimes for the heap versus the unsorted array wrong?
 
 TODO:
-
+4X4 HeapPriorityQueue: 158 steps, UnsortedPriorityQueue 180 steps
+5X5 HeapPriorityQueue: 702 steps, UnsortedPriorityQueue 396 steps
 ----------------------------------------------------------------------
 
 We will be checking your implementations of ArrayQueue, LinkedListQueue,
