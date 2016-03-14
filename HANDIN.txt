@@ -107,11 +107,11 @@ Heap:
 add ~ O(lg(n))
 remove ~ O(lg(n))
 
-With the specific data we have found, it is hard to compare the run-times because the algorithms are traversing the states differently. This is because the two implementations differ in stability, so duplicate values are chosen differently- leading to different results. Since the algorithms end up doing a different number of actions, we can't easily comment on how the runtimes compare.
+With the specific data we have found, it is hard to compare the run-times because the algorithms are traversing the states differently. This is because the two implementations differ in stability, so duplicate values are chosen differently- leading to different results. Since the algorithms end up doing a different number of actions, we can't easily comment on how the runtimes compare. The assymptotic runtimes are not wrong, but the functions are being called a different number of times for each.
 
-However, in the hypothetical case where they do have the same number steps, the idea is as follows. Each implementation will perform the same number of adds as removes. Since the unsorted array excels at adding but does worse at removing, we can say with some confidence that more adding than removing will allow the unsorted priority queue to prosper, and conversely the heap will do better when there is more removing than adding. This analysis comes down to the specific task at hand and understanding how the algorith will traverse the network.
+However, in the hypothetical case where they do have the same number of steps, the better implementation is determined by the number of adds and removes that need to be performed. More 'adds' than 'removes' favours the UnsortedPriorityQueue and more 'removes' than 'adds' favours the heapPriorityQueue. Which one wins depends on the specific problem.
 
-As a broad statement, we hypothesize the unsorted list should perform better in general because we generally add more elements than we remove in a BestFS search since we are taking a 'direct' path to the solution. In the ideal 'direct' path that has n steps, we would have 'n' removes and 'c*n', where c is a constant that isdependent on the nature of the network.
+We hypothesize the unsorted list should perform better in general because we generally add more elements than we remove in a BestFS search since we are taking a 'direct' path to the solution. In the ideal 'direct' path that has n steps, we would have 'n' removes and 'c*n', where c is a constant that is dependent on the nature of the network.
 
 ----------------------------------------------------------------------
 
